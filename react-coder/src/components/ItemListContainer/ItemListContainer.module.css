@@ -1,0 +1,11 @@
+.saludo {
+    background-color: #91c612;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    padding: 2rem;
+}
+
+button {
+    cursor: pointer;
+}

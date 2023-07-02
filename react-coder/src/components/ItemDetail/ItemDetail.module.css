@@ -1,0 +1,49 @@
+.cardDetailContainer {
+    display: flex;
+    background-color: #ddd;
+}
+
+.imgDetailsContainer {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 20px;
+    margin: 40px 20px 40px 40px;
+}
+
+.imgDetailsContainer img {
+    overflow: hidden;
+    padding: 1.2rem;
+    height: auto;
+    width: 100%;
+    max-width: 500px;
+}
+
+.cardDetailsContainer {
+    width: 30%;
+    margin: 40px 40px 40px 20px;
+}
+
+.cardDetailsContainer h2 {
+    padding: 2rem;
+    padding-left: 0;
+
+}
+
+.cardDetailsContainer p {
+    padding: 1rem;
+    padding-left: 0;
+    font-size: 1.2rem;
+}
+
+.cardButtonFinally {
+    padding: 1.5rem;
+    width: 100%;
+    border-radius: 30px;
+    border: 1px solid #91c612;
+    font-size: 1.2rem;
+    background-color: #91c612;
+    cursor: pointer;
+}
