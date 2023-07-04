@@ -16,7 +16,7 @@ const Checkout = () => {
         setLoading(true)
         const objOrder = {
             buyer : {
-                name: 'Lucao',
+                name: 'Lucas',
                 phone: '3754533779',
                 email: 'santilujavier@gmail.com',
                 address: 'Claudio Arrechea 1067',
