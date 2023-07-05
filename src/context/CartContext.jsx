@@ -12,14 +12,13 @@ export const CartProvider = ({ children }) => {
     const addItem = (productToAdd) => {
         if(!isInCart(productToAdd.id)) {
             setCart(prev => [...prev, productToAdd])
-        } else {
-            setNotification('error', 'El producto ya está en el carrito')
         }
     }
 
 
     const removeItem = (id) => {
         const cartUpdated = cart.filter(prod => prod.id !== id)
+        setNotification('success', 'El producto se ha elimiado correctamente')
         setCart(cartUpdated)
     }
 

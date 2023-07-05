@@ -1,10 +1,12 @@
-import { collection, query, where, documentId, getDocs, writeBatch, addDoc } from "firebase/firestore"
+import { useState, useEffect } from "react"
 import { useCart } from "../../context/CartContext"
-import { db } from "../../services/firebase/firebaseConfig"
 import { useNotification } from "../../notification/NotificationService"
-import { useState } from "react"
-import { ClipLoader } from "react-spinners"
 import { useNavigate } from "react-router-dom"
+
+import { collection, query, where, documentId, getDocs, writeBatch, addDoc } from "firebase/firestore"
+import { db } from "../../services/firebase/firebaseConfig"
+import { ClipLoader } from "react-spinners"
+
 
 const Checkout = () => {
     const { cart, clearCart, total } = useCart()
@@ -12,14 +14,43 @@ const Checkout = () => {
     const [ loading, setLoading ] = useState(false)
     const navigate = useNavigate()
 
-    const createOrder = async () => {
-        setLoading(true)
+    const [ name, setName ] = useState('')
+    const [ surname, setSurname ] = useState('')
+    const [ phone, setPhone ] = useState(0)
+    const [ address, setAddress ] = useState('')
+    const [ email, setEmail ] = useState('')
+    const [ confirmEmail, setConfirmEmail ] = useState('')
+    const [ emailError, setEmailError ] = useState('')
+
+    const [isFormIncomplete, setIsFormIncomplete] = useState(true);
+
+    useEffect(() => {
+        if (email === '' || confirmEmail === '' || name === '' || phone === 0 || address === '') {
+            setEmailError('Todos los campos deben estar completos');
+            setIsFormIncomplete(true);
+            return;
+        } else if (email !== confirmEmail) {
+            setEmailError('Los campos de email deben ser iguales');
+            setIsFormIncomplete(true);
+            return;
+        } else {
+            setEmailError('');
+            setIsFormIncomplete(false);
+        }
+    }, [email, confirmEmail, name, phone, address])
+    
+    const createOrder = async (event) => {
+        event.preventDefault();
+
+        setLoading(true);
+
         const objOrder = {
             buyer : {
-                name: 'Lucas',
-                phone: '3754533779',
-                email: 'santilujavier@gmail.com',
-                address: 'Claudio Arrechea 1067',
+                name: name,
+                surname: surname,
+                address: address,
+                phone: phone,
+                email: email,
             },
             items : cart,
             total,
@@ -29,8 +60,6 @@ const Checkout = () => {
             const ids = cart.map(prod => prod.id)
 
             const productsRef = query(collection(db, 'products'), where(documentId(), 'in', ids))
-
-            // getDocs(productsRef).then(() => {})
             const { docs } = await getDocs(productsRef)
 
             const batch = writeBatch(db)
@@ -50,6 +79,7 @@ const Checkout = () => {
                 }
             })
 
+            
             if(outOfStock.length === 0) {
                 batch.commit()
 
@@ -57,13 +87,15 @@ const Checkout = () => {
 
                 const { id } = await addDoc(ordersRef, objOrder)
 
-                setNotification('success', 'La órden fue generada correctamente, el ID es: ' + id)
+                setNotification('success', 'La órden fue generada correctamente, el ID es: ' + id, 5000)
                 clearCart()
                 navigate('/')
+
             } else {
-                setNotification('error', 'Hay productos de la lista no cuentan con el suficiente stock')
+                setNotification('error', 'Hay productos de la lista que no tienen suficiente stock');
             }
-        } catch (error) {
+
+        } catch(error) {
             setNotification('error', 'Hubo un problema al momento de generar la órden')
         } finally {
             setLoading(false)
@@ -87,11 +119,31 @@ const Checkout = () => {
     return (
         <>
             <h1>Checkout</h1>
-            <h2>**Formulario**</h2>
-            <button onClick={createOrder}>Generar órden de compra</button>
+            {/* {
+                cart.map(prod => {
+                    return(
+                        <h2>{prod.name}</h2>
+                    )
+                })
+            } */}
+            <form onSubmit={createOrder} style={{display: 'flex', flexDirection:'column', width:'500px', margin:'0 auto'}}>
+                <label>Nombre</label>
+                <input value={name} onChange={(e) => setName(e.target.value)} type='text'/>
+                <label>Apellido</label>
+                <input value={surname} onChange={(e) => setSurname(e.target.value)} type='text'/>
+                <label>Teléfono</label>
+                <input value={phone} onChange={(e) => setPhone(e.target.value)} type='number'/>
+                <label>Dirección</label>
+                <input value={address} onChange={(e) => setAddress(e.target.value)} type='text'/>
+                <label>Email</label>
+                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email"/>
+                <label>Confirmar email</label>
+                <input value={confirmEmail} onChange={(e) => setConfirmEmail(e.target.value)} type="email"/>
+                {emailError && <p>{emailError}</p>}
+                <button disabled={isFormIncomplete}>Generar órden de compra</button>
+            </form>
         </>
     )
 }
 
 export default Checkout
-// AFTER

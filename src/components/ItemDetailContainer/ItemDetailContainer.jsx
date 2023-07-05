@@ -20,6 +20,8 @@ const ItemDetailContainer = () => {
         return () => document.title = 'Component Hardware'
     }, [ product ])
 
+    
+
     if(loading) {
         return (
             <ClipLoader

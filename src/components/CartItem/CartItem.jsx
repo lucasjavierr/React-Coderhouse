@@ -15,7 +15,6 @@ const CartItem = ({ id, name, img, price, quantity}) => {
             <h4>subtotal: ${quantity * price}</h4>
             <button onClick={() => removeItem(id)}><img src={trash} alt='trash-icon'/></button>
         </div>
-                    
     )
 }
 

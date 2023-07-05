@@ -25,13 +25,17 @@ export const getProducts = (categoryId) => {
 export const getProductById = (itemId) => {
     const productRef = doc(db, 'products', itemId)
 
-        return getDoc(productRef)
-            .then(querySnapshot => {
+    return getDoc(productRef)
+        .then((querySnapshot) => {
+            if(querySnapshot.exists()) {
                 const fields = querySnapshot.data()
                 const productAdapted = { id: querySnapshot.id, ...fields }
                 return productAdapted
-            })
-            .catch(error => {
-                return error
-            })
+            } else {
+                throw new Error('El producto ingresado no existe')
+            }
+        })
+        .catch((error) => {
+            throw error
+        })
 }
