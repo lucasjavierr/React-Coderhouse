@@ -11,7 +11,7 @@ const Navbar = () => {
             </div>
             <div className={styles.navLinks}>
                 <NavLink to='/' className={({isActive}) => isActive ? styles.active : styles.inactive}>Todos los productos</NavLink>
-                {/* <NavLink to={'/category/notebooks'}>Notebooks</NavLink> */}
+                <NavLink to={'/category/notebooks'}>Notebooks</NavLink>
                 <NavLink to={'/category/processors'} className={({isActive}) => isActive ? styles.active : styles.inactive}>Procesadores</NavLink>
                 <NavLink to={'/category/graphics-cards'} className={({isActive}) => isActive ? styles.active : styles.inactive}>Tarjetas Gráficas</NavLink>
                 <NavLink to={'/category/motherboards'} className={({isActive}) => isActive ? styles.active : styles.inactive}>Motherboards</NavLink>
