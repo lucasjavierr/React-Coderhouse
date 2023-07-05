@@ -13,7 +13,6 @@ const CreateProduct = () => {
     const [description, setDescription] = useState('')
 
     const createProduct = async () => {
-        e.preventDefault()
         try {
             setLoading(true)
             const objproduct = { name, category, price, stock, img, description }

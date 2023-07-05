@@ -56,7 +56,7 @@ const products = [
 
     // MOTHERBOARDS
     { id: "z790-aorus-elite", name: "Z790 Aorus Elite AX", price: 2499.99, category: "motherboards", img: "/motherboards/z790-aorus-elite.png", stock: 10, description: "Placa madre para procesadores Intel® Core™ de 13a Generación", },
-    { id: "x670e-rog-che", name: "Asus ROG Crosshire X670E Extreme", price: 2499.99, category: "motherboards", img: "/motherboards/x670e-rog-che.png", stock: 10, description: "Placa madre para procesadores AMD Ryzen™ de Serie 7000", },
+    { id: "x670e-rog-che", name: "X670E Asus ROG Crosshire Extreme", price: 2499.99, category: "motherboards", img: "/motherboards/x670e-rog-che.png", stock: 10, description: "Placa madre para procesadores AMD Ryzen™ de Serie 7000", },
     { id: "z690-asrock-taichi", name: "Z690 Asrock Taichi", price: 2499.99, category: "motherboards", img: "/motherboards/z690-asrock-taichi.png", stock: 10, description: "Placa madre para procesadores Intel® Core™ de 13a Generación", },
     { id: "x570-aorus-elite", name: "X570 Aorus Elite", price: 2499.99, category: "motherboards", img: "/motherboards/x570-aorus-elite.png", stock: 10, description: "Placa madre para procesadores AMD Ryzen™ de Serie 5000", },
     { id: "b760m-gigabyte-gx", name: "B760M Gigabyte Gaming X", price: 2499.99, category: "motherboards", img: "/motherboards/b760m-gigabyte-gx.png", stock: 10, description: "Placa madre para procesadores Intel® Core™ de 13a Generación", },

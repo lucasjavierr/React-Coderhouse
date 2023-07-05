@@ -7,7 +7,7 @@ import ItemCount from '../ItemCount/ItemCount'
 import styles from './ItemDetail.module.css'
 
 const ItemDetail = ({ id, img, name, category, description, price, stock }) => {
-    const [quantity, setQuantity] = useState(0)
+    const [ quantity, setQuantity ] = useState(0)
     const { addItem } = useCart()
     const { setNotification } = useNotification()
 

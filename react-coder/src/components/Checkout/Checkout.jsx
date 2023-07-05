@@ -1,6 +1,6 @@
 import { collection, query, where, documentId, getDocs, writeBatch, addDoc } from "firebase/firestore"
 import { useCart } from "../../context/CartContext"
-import { db } from "../../services/firebase/firestore/firebaseConfig"
+import { db } from "../../services/firebase/firebaseConfig"
 import { useNotification } from "../../notification/NotificationService"
 import { useState } from "react"
 import { ClipLoader } from "react-spinners"

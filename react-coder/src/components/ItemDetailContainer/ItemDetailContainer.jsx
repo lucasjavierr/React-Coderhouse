@@ -1,42 +1,24 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { useNotification } from "../../notification/NotificationService"
-import { getDoc, doc } from "firebase/firestore"
-import { db } from "../../services/firebase/firestore/firebaseConfig"
-import ItemDetail from "../ItemDetail/ItemDetail"
 import { ClipLoader } from "react-spinners"
+import { useAsync } from "../../custom-hooks/useAsync"
+import { getProductById } from "../../services/firebase/firestore/products"
+import ItemDetail from "../ItemDetail/ItemDetail"
 import styles from "./ItemDetailContainer.module.css"
 
 const ItemDetailContainer = () => {
-    const [ product, setProduct ] = useState(null)
-    const [ loading, setLoading ] = useState(true)
     const { itemId } = useParams()
     const { setNotification } = useNotification()
+
+    const getProduct = () => getProductById(itemId)
+    const { data: product, error, loading} = useAsync(getProduct, [itemId])
 
     useEffect(() => {
         document.title = product ? product.name : 'Component Hardware'
 
         return () => document.title = 'Component Hardware'
     }, [ product ])
-
-    useEffect(() => {
-        const productRef = doc(db, 'products', itemId)
-
-        setLoading(true)
-
-        getDoc(productRef)
-            .then(querySnapshot => {
-                const fields = querySnapshot.data()
-                const productAdapted = { id: querySnapshot.id, ...fields }
-                setProduct(productAdapted)
-            })
-            .catch(() => {
-                setNotification('error', 'Lo sentimos, se ha producido un error')
-            })
-            .finally(() => {
-                setLoading(false)
-            })
-    }, [ itemId ])
 
     if(loading) {
         return (
@@ -50,6 +32,10 @@ const ItemDetailContainer = () => {
                 }}
             />
         )
+    }
+
+    if(error) {
+        setNotification('error', 'Lo sentimos, ha ocurrido un error al cargar los productos')
     }
 
     return(

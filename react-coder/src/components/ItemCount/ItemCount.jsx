@@ -3,7 +3,7 @@ import styles from "./ItemCount.module.css"
 
 
 const ItemCount = ({ stock, onAdd }) => {
-    const [count, setCount] = useState(1)
+    const [ count, setCount ] = useState(1)
 
     const increment = () => {
         if(count < stock) setCount(prev => prev + 1)
