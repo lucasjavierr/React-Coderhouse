@@ -23,21 +23,21 @@ const ItemDetail = ({ id, img, name, category, description, price, stock }) => {
     }
 
     return(
-        <div className={styles.cardDetailContainer}>
+        <div className={styles.detailContainer}>
             <div className={styles.imgDetailsContainer}>
-                <img src={img} alt={name} className={styles.imgDetailProduct}/>
+                <img src={img} alt={name}/>
             </div>
-            <div className={styles.cardDetailsContainer}>
+            <div className={styles.detailsContainer}>
                 <h2>{name}</h2>
                 <p>{description}</p>
                 <p>Precio: <span>${price}</span></p>
                 <p>Categoría: {category}</p>
                 <p>Stock disponible: {stock}</p>
-                <div>
+                <div className={styles.buttonFinallyContainer}>
                     {
                         quantity == 0
                         ? (stock > 0 ? <ItemCount stock={stock} onAdd={handleOnAdd}/> : <p>Sin stock</p>)
-                        : <Link to='/cart' className={styles.cardButtonFinally}>Finalizar compra</Link>
+                        : <Link to='/cart' className={styles.buttonFinally}>Finalizar compra</Link>
                     }
                 </div>
             </div>

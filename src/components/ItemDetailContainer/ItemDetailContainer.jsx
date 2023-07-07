@@ -4,6 +4,7 @@ import { useNotification } from "../../notification/NotificationService"
 import { ClipLoader } from "react-spinners"
 import { useAsync } from "../../custom-hooks/useAsync"
 import { getProductById } from "../../services/firebase/firestore/products"
+import Error404 from "../Error404/Error404"
 import ItemDetail from "../ItemDetail/ItemDetail"
 import styles from "./ItemDetailContainer.module.css"
 
@@ -13,6 +14,7 @@ const ItemDetailContainer = () => {
 
     const getProduct = () => getProductById(itemId)
     const { data: product, error, loading} = useAsync(getProduct, [itemId])
+    
 
     useEffect(() => {
         document.title = product ? product.name : 'Component Hardware'
@@ -37,7 +39,8 @@ const ItemDetailContainer = () => {
     }
 
     if(error) {
-        setNotification('error', 'Lo sentimos, ha ocurrido un error al cargar los productos')
+        setNotification('error', 'Lo sentimos, ha ocurrido un error al cargar el producto')
+        return <Error404 />
     }
 
     return(

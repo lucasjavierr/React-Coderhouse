@@ -1,8 +1,7 @@
 .divContainerList {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ccc;
-    /* min-height: 100vh; */
+    background-color: #bbb;
+    width: 100%;
 }

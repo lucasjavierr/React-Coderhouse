@@ -22,27 +22,27 @@ const Checkout = () => {
     const [ confirmEmail, setConfirmEmail ] = useState('')
     const [ emailError, setEmailError ] = useState('')
 
-    const [isFormIncomplete, setIsFormIncomplete] = useState(true);
+    const [isFormIncomplete, setIsFormIncomplete] = useState(true)
 
     useEffect(() => {
         if (email === '' || confirmEmail === '' || name === '' || phone === 0 || address === '') {
-            setEmailError('Todos los campos deben estar completos');
-            setIsFormIncomplete(true);
-            return;
+            setEmailError('Todos los campos deben estar completos')
+            setIsFormIncomplete(true)
+            return
         } else if (email !== confirmEmail) {
-            setEmailError('Los campos de email deben ser iguales');
-            setIsFormIncomplete(true);
-            return;
+            setEmailError('Los campos de email deben ser iguales')
+            setIsFormIncomplete(true)
+            return
         } else {
-            setEmailError('');
-            setIsFormIncomplete(false);
+            setEmailError('')
+            setIsFormIncomplete(false)
         }
     }, [email, confirmEmail, name, phone, address])
     
     const createOrder = async (event) => {
         event.preventDefault();
 
-        setLoading(true);
+        setLoading(true)
 
         const objOrder = {
             buyer : {
@@ -51,6 +51,7 @@ const Checkout = () => {
                 address: address,
                 phone: phone,
                 email: email,
+                time: new Date()
             },
             items : cart,
             total,
@@ -92,7 +93,7 @@ const Checkout = () => {
                 navigate('/')
 
             } else {
-                setNotification('error', 'Hay productos de la lista que no tienen suficiente stock');
+                setNotification('error', 'Hay productos de la lista que no tienen suficiente stock')
             }
 
         } catch(error) {
@@ -119,27 +120,27 @@ const Checkout = () => {
     return (
         <>
             <h1>Checkout</h1>
-            {/* {
+            {
                 cart.map(prod => {
                     return(
                         <h2>{prod.name}</h2>
                     )
                 })
-            } */}
-            <form onSubmit={createOrder} style={{display: 'flex', flexDirection:'column', width:'500px', margin:'0 auto'}}>
+            }
+            <form onSubmit={createOrder} style={{display: 'flex', flexDirection:'column', width:'700px', margin:'0 auto'}}>
                 <label>Nombre</label>
-                <input value={name} onChange={(e) => setName(e.target.value)} type='text'/>
+                <input value={name} onChange={(e) => setName(e.target.value)} type='text' required/>
                 <label>Apellido</label>
-                <input value={surname} onChange={(e) => setSurname(e.target.value)} type='text'/>
+                <input value={surname} onChange={(e) => setSurname(e.target.value)} type='text' required/>
                 <label>Teléfono</label>
-                <input value={phone} onChange={(e) => setPhone(e.target.value)} type='number'/>
+                <input value={phone} onChange={(e) => setPhone(e.target.value)} type='number' required/>
                 <label>Dirección</label>
-                <input value={address} onChange={(e) => setAddress(e.target.value)} type='text'/>
+                <input value={address} onChange={(e) => setAddress(e.target.value)} type='text' required/>
                 <label>Email</label>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email"/>
+                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" required/>
                 <label>Confirmar email</label>
-                <input value={confirmEmail} onChange={(e) => setConfirmEmail(e.target.value)} type="email"/>
-                {emailError && <p>{emailError}</p>}
+                <input value={confirmEmail} onChange={(e) => setConfirmEmail(e.target.value)} type="email" required/>
+                {emailError && <p style={{color: 'red'}}>{emailError}</p>}
                 <button disabled={isFormIncomplete}>Generar órden de compra</button>
             </form>
         </>

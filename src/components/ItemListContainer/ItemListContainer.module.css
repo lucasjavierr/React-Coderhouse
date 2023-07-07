@@ -1,9 +1,37 @@
-.saludo {
+.container {
+    background-color: #91c612;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.container h1 {
     background-color: #91c612;
     color: #fff;
     width: 100%;
     text-align: center;
     padding: 2rem;
+}
+
+.buttonsContainer {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+}
+
+.buttonsContainer button {
+    padding: 5px;
+    margin: 5px;
+    color: #000;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    transition: all .3s
+}
+
+.buttonsContainer button:hover {
+    background-color: #ccc;
 }
 
 button {

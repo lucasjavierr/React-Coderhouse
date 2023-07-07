@@ -1,4 +1,3 @@
-import cart from '../../assets/cart.svg'
 import styles from './CartWidget.module.css'
 import { useCart } from '../../context/CartContext'
 import { Link } from 'react-router-dom'
@@ -9,7 +8,7 @@ const CartWidget = () => {
     return(
         <div className={styles.cartContainer}>
             <Link to='/cart'>
-                <img src={cart} alt='cart-widget'/>
+                <i className="bi bi-cart"></i>
                 {totalQuantity}
             </Link>
         </div>

@@ -7,7 +7,6 @@ export const getProducts = (categoryId) => {
         ? collection(db, 'products')
         : query(collection(db, 'products'), where('category', '==', categoryId))
 
-
     return getDocs(productsRef)
         .then(querySnapshot => {
             const productsAdapted = querySnapshot.docs.map(doc => {

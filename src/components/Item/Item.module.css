@@ -1,27 +1,27 @@
 .cardContainer {
-    width: 250px;
-    height: 470px;
-    margin: 20px 10px;
-    cursor: pointer;
     display: flex;
+    justify-content: center;
+    align-content: space-between;
     flex-wrap: wrap;
     background-color: #fff;
     border-radius: 10px;
-    border: .5px solid rgba(0, 0, 0, .4);
+    border: 2px solid #ccc;
+    transition: border .3s;
+    cursor: pointer
 }
 
 .listContainer {
-    width: 100%;
     margin: 10px;
     cursor: pointer;
     display: flex;
     background-color: #fff;
     border-radius: 10px;
-    border: .5px solid #343433;
+    border: 2px solid #ccc;
+    transition: border .3s
 }
 
 .cardContainer:hover, .listContainer:hover {
-    border: .5px solid #91c612;
+    border: 2px solid #91c612;
 }
 
 .cardImgContainer {
@@ -41,13 +41,13 @@
     height: 150px;
     display: flex;
     justify-content: center;
-    background: linear-gradient(to bottom, #FFFFFF, #c6c6c6);
+    background: linear-gradient(to right, #FFFFFF, #c6c6c6);
     padding: 10px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
 
-.cardImgProduct {
+.cardImgContainer img {
     height: auto;
     width: 100%;
     max-width: 250px;
@@ -58,7 +58,7 @@
     padding: 10px;
 }
 
-.listImgProduct {
+.listImgContainer img {
     width: auto;
     height: auto;
     max-height: 150px;
@@ -73,6 +73,7 @@
     justify-content: center;
     flex-wrap: wrap;
     padding: 10px;
+    background-color: #fff;
 }
 
 .listDetailsContainer {
@@ -81,6 +82,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    background-color: #fff;
 }
 
 .cardDetailsContainer h3 {
@@ -106,8 +108,11 @@
     width: 100%;
     height: 60px;
     display: flex;
-    justify-content: center;
     padding: 10px;
+    justify-content: center;
+    background-color: #fff;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 .listButtonContainer {
@@ -115,9 +120,10 @@
     align-items: center;
     justify-content: center;
     padding: 10px;
+    background-color: #fff;
 }
 
-.cardButtonDetails, .listButtonDetails {
+.cardButtonContainer button, .listButtonContainer button {
     text-decoration: none;
     text-transform: uppercase;
     font-size: 1rem;
@@ -127,12 +133,12 @@
     border: 2px solid #91c612;
     background-color: #91c612;
     align-items: center;
+    transition: background-color .3s
 }
 
-.cardButtonDetails:hover, .listButtonDetails:hover {
-    color: #91c612;
-    color: #fff;
-    border: 2px solid #91c612;
-    background-color: #343433;
+.cardButtonContainer button:hover, .listButtonContainer button:hover {
+    color: #000;
+    border: 2px solid #74a00f;
+    background-color: #74a00f;
     cursor: pointer;
 }

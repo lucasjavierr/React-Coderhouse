@@ -14,7 +14,7 @@ const ItemCount = ({ stock, onAdd }) => {
     }
 
     return(
-        <>
+        <div style={{display:'flex', flexWrap:'wrap'}}>
             <div className={styles.countContainer}>
                 <button onClick={decrement} className={styles.countButton}>-</button>
                 <h4>{count}</h4>
@@ -23,7 +23,7 @@ const ItemCount = ({ stock, onAdd }) => {
             <div className={styles.buttonCartContainer}>
                 <button onClick={() => onAdd(count)} className={styles.buttonCart}>Agregar al carrito</button>
             </div>
-        </>
+        </div>
     )
 }
 

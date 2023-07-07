@@ -1,0 +1,11 @@
+.divContainerCards {
+    display: grid;
+    grid-template-columns: repeat(7, 250px);
+    grid-template-rows: auto;
+    grid-gap: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    justify-content: center;
+    background-color: #bbb;
+    width: 100%;
+}

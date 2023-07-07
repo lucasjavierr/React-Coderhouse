@@ -1,8 +1,48 @@
-import CartWidget from '../CartWidget/CartWidget'
+import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from '../../services/firebase/firebaseConfig'
+import { useNotification } from '../../notification/NotificationService'
+import { ClipLoader } from 'react-spinners'
+import CartWidget from '../CartWidget/CartWidget'
 import styles from './Navbar.module.css'
 
 const Navbar = () => {
+    const [ categories, setCategories ] = useState([])
+    const [ loading, setLoading ] = useState(true)
+    const { setNotification } = useNotification()
+
+    useEffect(() => {
+        const getCategories = async () => {
+            try {
+                setLoading(true)
+                const categoriesRef = collection(db, 'categories')
+                const querySnapshot = await getDocs(categoriesRef)
+                const categoriesData = querySnapshot.docs.map(doc => doc.data())
+                setCategories(categoriesData)
+            } catch (error) {
+                setNotification('error', 'Hubo un error al generar las categorías')
+            } finally {
+                setLoading(false)
+            }
+        }
+        getCategories()
+    }, [])
+
+    if(loading) {
+        return (
+            <ClipLoader
+                size={50} 
+                color="#91c612"
+                cssOverride={{
+                    display: 'block',
+                    margin: '0 auto',
+                    borderWidth: '3px'
+                }}
+            />
+        )
+    }
+
     return (
         <nav>
             <div className={styles.cartWidget}>
@@ -11,16 +51,13 @@ const Navbar = () => {
             </div>
             <div className={styles.navLinks}>
                 <NavLink to='/' className={({isActive}) => isActive ? styles.active : styles.inactive}>Todos los productos</NavLink>
-                {/* <NavLink to={'/category/notebooks'}>Notebooks</NavLink> */}
-                <NavLink to={'/category/processors'} className={({isActive}) => isActive ? styles.active : styles.inactive}>Procesadores</NavLink>
-                <NavLink to={'/category/graphics-cards'} className={({isActive}) => isActive ? styles.active : styles.inactive}>Tarjetas Gráficas</NavLink>
-                <NavLink to={'/category/motherboards'} className={({isActive}) => isActive ? styles.active : styles.inactive}>Motherboards</NavLink>
-                <NavLink to={'/category/ram-memories'} className={({isActive}) => isActive ? styles.active : styles.inactive}>Memorias RAM</NavLink>
-                <NavLink to={'/category/storage'} className={({isActive}) => isActive ? styles.active : styles.inactive}>Almacenamiento</NavLink>
-                <NavLink to={'/category/power-suplies'} className={({isActive}) => isActive ? styles.active : styles.inactive}>Fuentes de alimentacion</NavLink>
-                {/* <NavLink to={'/category/refrigeration'} className={({isActive}) => isActive ? styles.active : styles.inactive}>Refrigeración</NavLink> */}
-                {/* <NavLink to={'/category/chassis'} className={({isActive}) => isActive ? styles.active : styles.inactive}>Gabinetes</NavLink> */}
-                {/* <NavLink to={'/category/accesories'} className={({isActive}) => isActive ? styles.active : styles.inactive}>Accesorios</NavLink> */}
+                {
+                    categories.map((category) => {
+                        return (
+                            <NavLink key={category.key} to={`/category/${category.key}`} className={({isActive}) => isActive ? styles.active : styles.inactive}>{category.description}</NavLink>
+                        )
+                    })
+                }
             </div>
         </nav>
     )

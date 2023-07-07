@@ -5,9 +5,10 @@ import { useNotification } from "../../notification/NotificationService";
 import { ClipLoader } from "react-spinners";
 import { useAsync } from "../../custom-hooks/useAsync";
 import ItemList from "../ItemList/ItemList";
+import ItemGrid from "../ItemGrid/ItemGrid";
+import Error404 from "../Error404/Error404"
 import styles from "./ItemListContainer.module.css";
-import grid from '../../assets/grid-3x3-gap-fill.svg'
-import list from '../../assets/list-ul.svg'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 const ItemListContainer = ({ greeting }) => {
     const [ displayList, setDisplayList ] = useState(false)
@@ -18,6 +19,7 @@ const ItemListContainer = ({ greeting }) => {
 
     const getProductsWithCategory = () => getProducts(categoryId)
     const { data: products, error, loading } = useAsync(getProductsWithCategory, [categoryId])
+
 
     useEffect(() => {
         document.title = categoryId ? categoryId : 'Todos los productos'
@@ -41,15 +43,18 @@ const ItemListContainer = ({ greeting }) => {
     }
 
     if(error) {
-        setNotification('error', 'Lo sentimos, ha ocurrido un error al cargar los productos')
+        setNotification('error', 'Ha ocurrido un error al cargar los productos')
+        return <Error404 />
     }
 
     return (
-        <div>
-            <h1 className={styles.saludo}>{greeting}</h1>
-            <button onClick={() => setDisplayList(true)}><img src={list} alt='list-icon'/></button>
-            <button onClick={() => setDisplayList(false)}><img src={grid} alt='grid-icon'/></button>
-            <ItemList products={products} displayList={displayList}/>
+        <div className={styles.container}>
+            <h1>{greeting}</h1>
+            <div className={styles.buttonsContainer}>
+                <button onClick={() => setDisplayList(true)}><i className='bi bi-list-task'></i></button>
+                <button onClick={() => setDisplayList(false)}><i className="bi bi-grid"></i></button>
+            </div>
+            { displayList ? <ItemList products={products} displayList={displayList}/> : <ItemGrid products={products} displayList={displayList}/>}
         </div>
     );
 };

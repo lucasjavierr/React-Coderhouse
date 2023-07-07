@@ -1,5 +1,5 @@
 import { useCart } from "../../context/CartContext"
-import trash from '../../assets/trash.svg'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 const CartItem = ({ id, name, img, price, quantity}) => {
 
@@ -13,7 +13,7 @@ const CartItem = ({ id, name, img, price, quantity}) => {
             <h4>{price}</h4>
             <h4>cantidad: {quantity}</h4>
             <h4>subtotal: ${quantity * price}</h4>
-            <button onClick={() => removeItem(id)}><img src={trash} alt='trash-icon'/></button>
+            <button onClick={() => removeItem(id)}><i className="bi bi-trash-fill"></i></button>
         </div>
     )
 }

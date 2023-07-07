@@ -1,13 +1,14 @@
 import { useCart } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 import CartItem from "../CartItem/CartItem";
+import styles from './Cart.module.css'
 
 const Cart = () => {
     const { cart, clearCart, totalQuantity, total } = useCart()
 
     if(!totalQuantity) {
         return (
-            <div>
+            <div className={styles.carritoVacio}>
                 <h1>Tu carrito está vacío ☹️</h1>
                 <Link to='/'>Ir al inicio</Link>
             </div>
