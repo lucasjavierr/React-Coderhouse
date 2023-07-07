@@ -6,7 +6,6 @@ import { ClipLoader } from "react-spinners";
 import { useAsync } from "../../custom-hooks/useAsync";
 import ItemList from "../ItemList/ItemList";
 import ItemGrid from "../ItemGrid/ItemGrid";
-import Error404 from "../Error404/Error404"
 import styles from "./ItemListContainer.module.css";
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
@@ -44,7 +43,6 @@ const ItemListContainer = ({ greeting }) => {
 
     if(error) {
         setNotification('error', 'Ha ocurrido un error al cargar los productos')
-        return <Error404 />
     }
 
     return (
