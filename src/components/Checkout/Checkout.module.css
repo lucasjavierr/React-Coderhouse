@@ -1,0 +1,13 @@
+.checkoutContainer {
+    background-color: #ccc;
+}
+
+.checkoutContainer h1 {
+    text-align: center;
+    padding: 2rem;
+    background-color: #91c612;
+}
+
+.checkoutContainer p {
+    text-align: end;
+}

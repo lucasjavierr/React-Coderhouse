@@ -8,7 +8,7 @@ const CartWidget = () => {
     return(
         <div className={styles.cartContainer}>
             <Link to='/cart'>
-                <i className="bi bi-cart"></i>
+                {totalQuantity === 0 ? <i className="bi bi-cart"></i> : <i className="bi bi-cart-fill"></i>}
                 {totalQuantity}
             </Link>
         </div>

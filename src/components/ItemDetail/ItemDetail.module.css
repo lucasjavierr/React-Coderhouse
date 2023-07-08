@@ -43,16 +43,18 @@
 }
 
 .buttonFinallyContainer a {
+    width: 100%;
+    padding: 1.5rem;
+    color: #000;
+    background-color: #91c612;
     text-decoration: none;
     text-align: center;
-    color: #000;
-    padding: 1.5rem;
-    width: 100%;
-    border-radius: 30px;
-    border: 1px solid #91c612;
     font-size: 1.2rem;
-    background-color: #91c612;
+    font-weight: bold;
+    border: 1px solid #91c612;
+    border-radius: 30px;
     cursor: pointer;
+    transition: background-color .3s;
 }
 
 .buttonFinallyContainer a:hover {

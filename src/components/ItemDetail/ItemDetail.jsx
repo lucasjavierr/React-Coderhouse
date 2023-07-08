@@ -3,6 +3,7 @@ import { useCart } from '../../context/CartContext'
 import { useNotification } from '../../notification/NotificationService'
 import { Link } from 'react-router-dom'
 import ItemCount from '../ItemCount/ItemCount'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 import styles from './ItemDetail.module.css'
 
@@ -37,7 +38,7 @@ const ItemDetail = ({ id, img, name, category, description, price, stock }) => {
                     {
                         quantity == 0
                         ? (stock > 0 ? <ItemCount stock={stock} onAdd={handleOnAdd}/> : <p>Sin stock</p>)
-                        : <Link to='/cart' className={styles.buttonFinally}>Finalizar compra</Link>
+                        : <Link to='/cart' className={styles.buttonFinally}>Finalizar compra <i className="bi bi-cart-check-fill"></i></Link>
                     }
                 </div>
             </div>

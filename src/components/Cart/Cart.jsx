@@ -1,7 +1,8 @@
 import { useCart } from "../../context/CartContext";
 import { Link } from "react-router-dom";
-import CartItem from "../CartItem/CartItem";
+import ItemCart from "../ItemCart/ItemCart";
 import styles from './Cart.module.css'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 const Cart = () => {
     const { cart, clearCart, totalQuantity, total } = useCart()
@@ -17,13 +18,17 @@ const Cart = () => {
 
     return (
         <>
-            <h1>Carrito</h1>
+            <h1 className={styles.cartTitle}>Carrito</h1>
             { 
-                cart.map(prod => <CartItem key={prod.id} {...prod}/>)
+                cart.map(prod => <ItemCart key={prod.id} {...prod}/>)
             }
-            <h2>Total: ${total}</h2>
-            <button onClick={() => clearCart()}>Vaciar carrito</button>
-            <Link to='/checkout'>Checkout</Link>
+            <div className={styles.actionsContainer}>
+                <button onClick={() => clearCart()}>Vaciar carrito <i className="bi bi-cart"></i></button>
+                <div className={styles.buyNow}>
+                    <h2>Total: ${total}</h2>
+                    <Link to='/checkout'>Comprar</Link>
+                </div>
+            </div>
         </>
     )
 }

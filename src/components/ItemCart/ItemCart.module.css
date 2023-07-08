@@ -1,0 +1,39 @@
+.cartItemContainer {
+    min-height: 170px;
+    max-height: 170px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ccc;
+}
+
+.cartItemContainer img {
+    width: 150px;
+    padding-left: 20px;
+}
+
+.cartItemContainer h3 {
+    justify-self: end;
+}
+
+.cartItemContainer button {
+    padding: 10px;
+    justify-self: end;
+    margin-right: 30px;
+    color: #000;
+    background-color: #f00;
+    font-size: 30px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color .3s;
+}
+
+.cartItemContainer button:hover {
+    background-color: rgb(180, 0, 0);
+}

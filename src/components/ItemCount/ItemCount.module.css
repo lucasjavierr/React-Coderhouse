@@ -6,7 +6,7 @@
     flex-wrap: wrap;
 }
 
-.countButton {
+.countContainer button {
     padding: 3px;
     margin: 2rem;
     font-weight: bold;
@@ -28,18 +28,18 @@
     width: 100%;
 }
 
-.buttonCart {
+.buttonCartContainer button {
     padding: 1.5rem;
     width: 100%;
     border-radius: 30px;
     border: 1px solid #91c612;
-    font-size: 1.2rem;
     background-color: #91c612;
+    font-size: 1.2rem;
+    font-weight: bold;
     cursor: pointer;
-    width: 100%;
-    transition: color .3s;
+    transition: background-color .3s;
 }
 
-.buttonCart:hover {
+.buttonCartContainer button:hover {
     background-color: #6c940e;
 }

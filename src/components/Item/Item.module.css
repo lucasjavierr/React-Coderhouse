@@ -138,7 +138,7 @@
 
 .cardButtonContainer button:hover, .listButtonContainer button:hover {
     color: #000;
-    border: 2px solid #74a00f;
-    background-color: #74a00f;
+    border: 2px solid #6c940e;
+    background-color: #6c940e;
     cursor: pointer;
 }

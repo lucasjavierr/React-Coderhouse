@@ -7,12 +7,17 @@ import { collection, query, where, documentId, getDocs, writeBatch, addDoc } fro
 import { db } from "../../services/firebase/firebaseConfig"
 import { ClipLoader } from "react-spinners"
 
+import ItemCheckout from "../ItemCheckout/ItemCheckout"
+import styles from './Checkout.module.css'
+
 
 const Checkout = () => {
     const { cart, clearCart, total } = useCart()
+
     const { setNotification } = useNotification()
-    const [ loading, setLoading ] = useState(false)
     const navigate = useNavigate()
+
+    const [ loading, setLoading ] = useState(false)
 
     const [ name, setName ] = useState('')
     const [ surname, setSurname ] = useState('')
@@ -38,7 +43,7 @@ const Checkout = () => {
             setIsFormIncomplete(false)
         }
     }, [email, confirmEmail, name, phone, address])
-    
+
     const createOrder = async (event) => {
         event.preventDefault();
 
@@ -118,32 +123,65 @@ const Checkout = () => {
     }
 
     return (
-        <>
+        <div className={styles.checkoutContainer}>
             <h1>Checkout</h1>
             {
-                cart.map(prod => {
-                    return(
-                        <h2>{prod.name}</h2>
-                    )
-                })
+                cart.map(prod => <ItemCheckout key={prod.id} {...prod}/>)
             }
+            <p>Total: {total}</p>
             <form onSubmit={createOrder} style={{display: 'flex', flexDirection:'column', width:'700px', margin:'0 auto'}}>
                 <label>Nombre</label>
-                <input value={name} onChange={(e) => setName(e.target.value)} type='text' required/>
+                <input 
+                    required 
+                    value={name} 
+                    type='text' 
+                    onChange={(e) => setName(e.target.value)} 
+                    placeholder="Ingrese su nombre"
+                />
                 <label>Apellido</label>
-                <input value={surname} onChange={(e) => setSurname(e.target.value)} type='text' required/>
+                <input 
+                    required 
+                    value={surname} 
+                    type='text' 
+                    onChange={(e) => setSurname(e.target.value)} 
+                    placeholder="Ingrese su apellido"
+                />
                 <label>Teléfono</label>
-                <input value={phone} onChange={(e) => setPhone(e.target.value)} type='number' required/>
+                <input 
+                    required 
+                    value={phone} 
+                    type='number' 
+                    onChange={(e) => setPhone(e.target.value)} 
+                    placeholder="Ingrese su número de teléfono"
+                />
                 <label>Dirección</label>
-                <input value={address} onChange={(e) => setAddress(e.target.value)} type='text' required/>
+                <input 
+                    required 
+                    value={address} 
+                    type='text' 
+                    onChange={(e) => setAddress(e.target.value)} 
+                    placeholder="Ingrese su dirección"
+                />
                 <label>Email</label>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" required/>
+                <input 
+                    required 
+                    value={email} 
+                    type="email" 
+                    onChange={(e) => setEmail(e.target.value)} 
+                    placeholder="Confirmar correo electrónico"
+                />
                 <label>Confirmar email</label>
-                <input value={confirmEmail} onChange={(e) => setConfirmEmail(e.target.value)} type="email" required/>
+                <input 
+                    required 
+                    value={confirmEmail} 
+                    type="email" 
+                    onChange={(e) => setConfirmEmail(e.target.value)} 
+                    placeholder="Ingrese su correo electrónico"
+                />
                 {emailError && <p style={{color: 'red'}}>{emailError}</p>}
                 <button disabled={isFormIncomplete}>Generar órden de compra</button>
             </form>
-        </>
+        </div>
     )
 }
 

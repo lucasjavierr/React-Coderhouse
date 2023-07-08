@@ -1,3 +1,10 @@
+.cartTitle {
+    padding: 2rem;
+    color: #fff;
+    background-color: #91c612;
+    text-align: center;
+}
+
 .carritoVacio {
     display: flex;
     flex-wrap: wrap;
@@ -9,7 +16,7 @@
 
 .carritoVacio h1 {
     width: 100%;
-    padding-top: 30px;
+    padding: 2rem;
     text-align: center;
 }
 
@@ -21,8 +28,59 @@
     margin-top: 30px;
     border-radius: 10px;
     font-size: 20px;
+    transition: background-color .3s;
 }
 
 .carritoVacio a:hover {
-    background-color: ;
+    background-color: #6c940e;
+}
+
+.actionsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.actionsContainer button {
+    padding: 30px;
+    border-radius: 20px;
+    border: none;
+    background-color: #ccc;
+    font-size: 25px;
+    transition: background-color .3s;
+    color: #000;
+}
+
+.actionsContainer button:hover {
+    background-color: #aaa;
+}
+
+.buyNow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buyNow h2 {
+    background-color: #ccc;
+    padding: 30px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.buyNow a {
+    color:#000;
+    background-color: #91c612;
+    text-decoration: none;
+    padding: 30px;
+    font-size: 25px;
+    font-weight: bold;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: background-color .3s;
+}
+
+.buyNow a:hover {
+    background-color: #6c940e;
 }
