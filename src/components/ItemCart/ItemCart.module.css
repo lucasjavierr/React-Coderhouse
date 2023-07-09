@@ -13,9 +13,11 @@
     background-color: #ccc;
 }
 
-.cartItemContainer img {
+.cartItemImgContainer {
+    display: flex;
+    height: 150px;
     width: 150px;
-    padding-left: 20px;
+    justify-content: center;
 }
 
 .cartItemContainer h3 {

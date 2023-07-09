@@ -8,7 +8,9 @@ const ItemCart = ({ id, name, img, price, quantity}) => {
 
     return (
         <div className={styles.cartItemContainer}>
-            <img src={img} alt={name}/>
+            <div className={styles.cartItemImgContainer}>
+                <img src={img} alt={name}/>
+            </div>
             <h2>{name}</h2>
             <h3>Cantidad: {quantity}</h3>
             <h3>Precio Unitario: {price}</h3>
