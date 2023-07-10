@@ -16,8 +16,12 @@
 .cartItemImgContainer {
     display: flex;
     height: 150px;
-    width: 150px;
+    width: 300px;
     justify-content: center;
+}
+
+.cartItemImgContainer img {
+    max-width: 270px;
 }
 
 .cartItemContainer h3 {
