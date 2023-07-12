@@ -52,7 +52,7 @@ const ItemListContainer = ({ greeting }) => {
                 <button onClick={() => setDisplayList(true)}><i className='bi bi-list-task'></i></button>
                 <button onClick={() => setDisplayList(false)}><i className="bi bi-grid"></i></button>
             </div>
-            { displayList ? <ItemList products={products} displayList={displayList}/> : <ItemGrid products={products} displayList={displayList}/>}
+            { displayList ? <ItemList products={products} displayList /> : <ItemGrid products={products} displayList={displayList} />}
         </div>
     );
 };

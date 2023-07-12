@@ -18,14 +18,14 @@ const Cart = () => {
 
     return (
         <>
-            <h1 className={styles.cartTitle}>Carrito</h1>
+            <h2 className={styles.cartTitle}>Carrito</h2>
             { 
                 cart.map(prod => <ItemCart key={prod.id} {...prod}/>)
             }
             <div className={styles.actionsContainer}>
                 <button onClick={() => clearCart()}>Vaciar carrito <i className="bi bi-cart"></i></button>
                 <div className={styles.buyNow}>
-                    <h2>Total: ${total}</h2>
+                    <h3>Total: ${total}</h3>
                     <Link to='/checkout'>Comprar</Link>
                 </div>
             </div>
