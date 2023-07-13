@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { collection, getDocs } from 'firebase/firestore'
-import { db } from '../../services/firebase/firebaseConfig'
 import { useNotification } from '../../notification/NotificationService'
+import { getCategories } from '../../services/firebase/firestore/products'
 import CartWidget from '../CartWidget/CartWidget'
 import s from './Navbar.module.css'
 
@@ -13,49 +12,27 @@ const Navbar = () => {
     
 
     useEffect(() => {
-        const getCategories = async () => {
-            try {
-                const categoriesRef = collection(db, 'categories')
-                const querySnapshot = await getDocs(categoriesRef)
-                const categoriesData = querySnapshot.docs.map(doc => doc.data())
-                setCategories(categoriesData)
-            } catch (error) {
-                setNotification('error', 'Hubo un error al generar las categorías')
-            }
-        }
         getCategories()
+            .then((resolve) => {
+                setCategories(resolve)
+            })
+            .catch((reject) => {
+                setNotification('error', 'Hubo un error al obtener las categorías')
+            })
     }, [])
 
-    useEffect(() => {
-        const listItem = document.querySelectorAll('.navbar ul li');
-        const menuBackdrop = menuBackdropRef.current;
-    
-        const handleMouseEnter = (e) => {
-            const { left, top, width, height } = e.target.getBoundingClientRect();
-    
-            menuBackdrop.style.setProperty('--left', `${left}px`);
-            menuBackdrop.style.setProperty('--top', `${top}px`);
-            menuBackdrop.style.setProperty('--width', `${width}px`);
-            menuBackdrop.style.setProperty('--height', `${height}px`);
-            menuBackdrop.style.opacity = '1';
-        };
-    
-        const handleMouseLeave = () => {
-            menuBackdrop.style.opacity = '0';
-        };
-    
-        listItem.forEach((item) => {
-            item.addEventListener('mouseenter', handleMouseEnter);
-            item.addEventListener('mouseleave', handleMouseLeave);
-        });
-    
-        return () => {
-            listItem.forEach((item) => {
-                item.removeEventListener('mouseenter', handleMouseEnter);
-                item.removeEventListener('mouseleave', handleMouseLeave);
-            });
-        };
-    }, []);
+    const handleMouseEnter = (e) => {
+        const { left, top, width, height } = e.target.getBoundingClientRect();
+        menuBackdropRef.current.style.setProperty('--left', `${left}px`);
+        menuBackdropRef.current.style.setProperty('--top', `${top}px`);
+        menuBackdropRef.current.style.setProperty('--width', `${width}px`);
+        menuBackdropRef.current.style.setProperty('--height', `${height}px`);
+        menuBackdropRef.current.style.opacity = '1';
+    }
+
+    const handleMouseLeave = () => {
+        menuBackdropRef.current.style.opacity = '0';
+    }
 
     return (
         <header className={s.header}>
@@ -70,17 +47,8 @@ const Navbar = () => {
                     <li>
                         <NavLink to='/' 
                             className={({isActive}) => isActive ? s.active : s.inactive}
-                            onMouseEnter={(e) => {
-                                const { left, top, width, height } = e.target.getBoundingClientRect();
-                                menuBackdropRef.current.style.setProperty('--left', `${left}px`);
-                                menuBackdropRef.current.style.setProperty('--top', `${top}px`);
-                                menuBackdropRef.current.style.setProperty('--width', `${width}px`);
-                                menuBackdropRef.current.style.setProperty('--height', `${height}px`);
-                                menuBackdropRef.current.style.opacity = '1';
-                            }}
-                            onMouseLeave={() => {
-                                menuBackdropRef.current.style.opacity = '0';
-                            }}
+                            onMouseEnter={handleMouseEnter}
+                            onMouseLeave={handleMouseLeave}
                             >
                             Todos los productos
                         </NavLink>
@@ -91,17 +59,8 @@ const Navbar = () => {
                                 <NavLink 
                                     to={`/category/${category.key}`} 
                                     className={({isActive}) => isActive ? s.active : s.inactive}
-                                    onMouseEnter={(e) => {
-                                        const { left, top, width, height } = e.target.getBoundingClientRect();
-                                        menuBackdropRef.current.style.setProperty('--left', `${left}px`);
-                                        menuBackdropRef.current.style.setProperty('--top', `${top}px`);
-                                        menuBackdropRef.current.style.setProperty('--width', `${width}px`);
-                                        menuBackdropRef.current.style.setProperty('--height', `${height}px`);
-                                        menuBackdropRef.current.style.opacity = '1';
-                                    }}
-                                    onMouseLeave={() => {
-                                        menuBackdropRef.current.style.opacity = '0';
-                                    }}
+                                    onMouseEnter={handleMouseEnter}
+                                    onMouseLeave={handleMouseLeave}
                                     >
                                     {category.description}
                                 </NavLink>

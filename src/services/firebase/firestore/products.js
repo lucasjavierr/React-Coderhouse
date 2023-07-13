@@ -38,3 +38,14 @@ export const getProductById = (itemId) => {
             throw error
         })
 }
+
+export const getCategories = async () => {
+    try {
+        const categoriesRef = collection(db, 'categories')
+        const querySnapshot = await getDocs(categoriesRef)
+        const categoriesData = querySnapshot.docs.map(doc => doc.data())
+        return categoriesData
+    } catch (error) {
+        return error
+    }
+}

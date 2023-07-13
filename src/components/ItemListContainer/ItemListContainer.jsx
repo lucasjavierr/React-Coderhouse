@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { getProducts } from "../../services/firebase/firestore/products";
 import { useParams } from "react-router-dom";
-import { useNotification } from "../../notification/NotificationService";
 import { ClipLoader } from "react-spinners";
 import { useAsync } from "../../custom-hooks/useAsync";
+import { getCategories } from "../../services/firebase/firestore/products";
 import ItemList from "../ItemList/ItemList";
 import ItemGrid from "../ItemGrid/ItemGrid";
 import styles from "./ItemListContainer.module.css";
@@ -13,18 +13,16 @@ const ItemListContainer = ({ greeting }) => {
     const [ displayList, setDisplayList ] = useState(false)
     const { categoryId } = useParams()
 
-    const { setNotification } = useNotification()
-
 
     const getProductsWithCategory = () => getProducts(categoryId)
     const { data: products, error, loading } = useAsync(getProductsWithCategory, [categoryId])
 
 
-    useEffect(() => {
-        document.title = categoryId ? categoryId : 'Todos los productos'
-
-        return () => document.title = 'Component Hardware'
-    }, [ categoryId ])
+    getCategories()
+        .then(resolve => {
+            const category = resolve.find(cat => cat.key === categoryId)
+            document.title = categoryId ? category.description : 'Todos los productos'
+        })
 
 
     if(loading) {
@@ -42,7 +40,7 @@ const ItemListContainer = ({ greeting }) => {
     }
 
     if(error) {
-        setNotification('error', 'Ha ocurrido un error al cargar los productos')
+        return <h1 style={{textAlign:'center', fontSize:'3rem'}}>404 NOT FOUND</h1>
     }
 
     return (

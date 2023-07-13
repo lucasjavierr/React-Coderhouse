@@ -1,6 +1,5 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { useNotification } from "../../notification/NotificationService"
 import { ClipLoader } from "react-spinners"
 import { useAsync } from "../../custom-hooks/useAsync"
 import { getProductById } from "../../services/firebase/firestore/products"
@@ -9,19 +8,16 @@ import styles from "./ItemDetailContainer.module.css"
 
 const ItemDetailContainer = () => {
     const { itemId } = useParams()
-    const { setNotification } = useNotification()
+
 
     const getProduct = () => getProductById(itemId)
     const { data: product, error, loading} = useAsync(getProduct, [itemId])
-    
 
     useEffect(() => {
-        document.title = product ? product.name : 'Component Hardware'
+        document.title = itemId ? product.name : 'Component Hardware'
 
         return () => document.title = 'Component Hardware'
     }, [ product ])
-
-    
 
     if(loading) {
         return (
@@ -38,7 +34,7 @@ const ItemDetailContainer = () => {
     }
 
     if(error) {
-        setNotification('error', 'Lo sentimos, ha ocurrido un error al cargar el producto')
+        return <h1 style={{textAlign:'center', fontSize:'3rem'}}>404 NOT FOUND</h1>
     }
 
     return(
