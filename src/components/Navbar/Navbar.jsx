@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useNotification } from '../../notification/NotificationService'
 import { getCategories } from '../../services/firebase/firestore/products'
@@ -17,11 +17,11 @@ const Navbar = () => {
                 setCategories(resolve)
             })
             .catch((reject) => {
-                setNotification('error', 'Hubo un error al obtener las categorías')
+                setNotification('error', `Hubo un error al obtener las categorías, ${reject}`)
             })
     }, [])
 
-    const handleMouseEnter = (e) => {
+    /* const handleMouseEnter = (e) => {
         const { left, top, width, height } = e.target.getBoundingClientRect();
         menuBackdropRef.current.style.setProperty('--left', `${left}px`);
         menuBackdropRef.current.style.setProperty('--top', `${top}px`);
@@ -32,7 +32,7 @@ const Navbar = () => {
 
     const handleMouseLeave = () => {
         menuBackdropRef.current.style.opacity = '0';
-    }
+    } */
 
     return (
         <header className={s.header}>
@@ -42,31 +42,30 @@ const Navbar = () => {
                 </Link>
                 <CartWidget />
             </div>
-            <nav  className={s.navbar}>
+            <nav className={s.navbar}>
                 <ul>
                     <li>
-                        <NavLink to='/' 
+                        <NavLink 
+                            to='/' 
                             className={({isActive}) => isActive ? s.active : s.inactive}
-                            onMouseEnter={handleMouseEnter}
-                            onMouseLeave={handleMouseLeave}
+                            // onMouseEnter={handleMouseEnter}
+                            // onMouseLeave={handleMouseLeave}
                             >
                             Todos los productos
                         </NavLink>
                     </li> 
-                    {
-                        categories.map((category) => (
-                            <li key={category.key}>
-                                <NavLink 
-                                    to={`/category/${category.key}`} 
-                                    className={({isActive}) => isActive ? s.active : s.inactive}
-                                    onMouseEnter={handleMouseEnter}
-                                    onMouseLeave={handleMouseLeave}
-                                    >
-                                    {category.description}
-                                </NavLink>
-                            </li>
-                        ))
-                    }
+                    { categories.map((category) => (
+                        <li key={category.key}>
+                            <NavLink 
+                                to={`/category/${category.key}`} 
+                                className={({isActive}) => isActive ? s.active : s.inactive}
+                                // onMouseEnter={handleMouseEnter}
+                                // onMouseLeave={handleMouseLeave}
+                                >
+                                {category.description}
+                            </NavLink>
+                        </li>
+                    )) }
                     <div id='menu-backdrop' className={s.boxNavLinks} ref={menuBackdropRef}></div>
                 </ul>
             </nav>

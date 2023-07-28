@@ -5,14 +5,9 @@ import { useNavigate } from "react-router-dom"
 import { collection, query, where, documentId, getDocs, writeBatch, addDoc } from "firebase/firestore"
 import { db } from "../../services/firebase/firebaseConfig"
 import { ClipLoader } from "react-spinners"
-import styles from'./CheckoutForm.module.css'
+import s from'./CheckoutForm.module.css'
 
 const CheckoutForm = () => {
-    const { cart, clearCart, total } = useCart()
-
-    const { setNotification } = useNotification()
-    const navigate = useNavigate()
-
     const [ loading, setLoading ] = useState(false)
 
     const [ name, setName ] = useState('')
@@ -22,8 +17,13 @@ const CheckoutForm = () => {
     const [ email, setEmail ] = useState('')
     const [ confirmEmail, setConfirmEmail ] = useState('')
     const [ emailError, setEmailError ] = useState('')
-
     const [isFormIncomplete, setIsFormIncomplete] = useState(true)
+    
+    const { cart, clearCart, total } = useCart()
+    const { setNotification } = useNotification()
+    const navigate = useNavigate()
+
+
 
     useEffect(() => {
         if (email === '' || confirmEmail === '' || name === '' || phone === 0 || address === '') {
@@ -120,10 +120,10 @@ const CheckoutForm = () => {
     }
 
     return(
-        <div className={styles.formContainer}>
+        <section className={s.formContainer}>
             <h2>Datos del comprador</h2>
             <form onSubmit={createOrder}>
-                <div className={styles.inputBox}>
+                <div className={s.inputBox}>
                     <input 
                         required 
                         value={name} 
@@ -132,7 +132,7 @@ const CheckoutForm = () => {
                         />
                     <label>Nombre</label>
                 </div>
-                <div className={styles.inputBox}>
+                <div className={s.inputBox}>
                     <input 
                         required 
                         value={surname} 
@@ -141,7 +141,7 @@ const CheckoutForm = () => {
                         />
                     <label>Apellido</label>
                 </div>
-                <div className={styles.inputBox}>
+                <div className={s.inputBox}>
                     <input 
                         required 
                         value={phone} 
@@ -150,7 +150,7 @@ const CheckoutForm = () => {
                         />
                     <label>Teléfono</label>
                 </div>
-                <div className={styles.inputBox}>
+                <div className={s.inputBox}>
                     <input 
                         required 
                         value={address} 
@@ -159,7 +159,7 @@ const CheckoutForm = () => {
                         />
                     <label>Dirección</label>
                 </div>
-                <div className={styles.inputBox}>
+                <div className={s.inputBox}>
                     <input 
                         required 
                         value={email} 
@@ -168,7 +168,7 @@ const CheckoutForm = () => {
                         />
                     <label>Email</label>
                 </div>
-                <div className={styles.inputBox}>
+                <div className={s.inputBox}>
                     <input 
                         required 
                         value={confirmEmail} 
@@ -177,10 +177,10 @@ const CheckoutForm = () => {
                         />
                     <label>Confirmar email</label>
                 </div>
-                {emailError && <p className={styles.campError}>{emailError}</p>}
-                {isFormIncomplete || <button>Generar órden de compra</button>}
+                { emailError && <p className={s.campError}>{emailError}</p> }
+                { isFormIncomplete || <button>Generar órden de compra</button> }
             </form>
-        </div>
+        </section>
     )
 }
 

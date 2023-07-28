@@ -1,11 +1,11 @@
 import Item from '../Item/Item'
-import styles from './ItemList.module.css'
+import s from './ItemList.module.css'
 
 const ItemList = ({ products, displayList }) => {
     return(
-        <div className={styles.divContainerList}>
+        <main className={s.divContainerList}>
             { products.map(prod => <Item key={prod.id} {...prod} displayList={displayList} /> ) }
-        </div>
+        </main>
     )
 }
 

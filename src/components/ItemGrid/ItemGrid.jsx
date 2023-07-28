@@ -1,11 +1,11 @@
 import Item from '../Item/Item'
-import styles from './ItemGrid.module.css'
+import s from './ItemGrid.module.css'
 
 const ItemGrid = ({ products, displayList }) => {
     return(
-        <div className={styles.divContainerCards}>
+        <main className={s.divContainerCards}>
             { products.map(prod => <Item key={prod.id} {...prod} displayList={displayList}/> ) }
-        </div>
+        </main>
     )
 }
 

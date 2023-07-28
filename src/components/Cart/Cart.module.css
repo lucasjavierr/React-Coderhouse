@@ -47,7 +47,7 @@
     border-radius: 20px;
     border: none;
     background-color: #ccc;
-    font-size: 25px;
+    font-size: 20px;
     transition: background-color .3s;
     color: #000;
 }
@@ -62,11 +62,12 @@
     justify-content: center;
 }
 
-.buyNow h2 {
+.buyNow h3 {
     background-color: #ccc;
     padding: 30px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
+    font-size: 20px;
 }
 
 .buyNow a {
@@ -74,7 +75,7 @@
     background-color: #91c612;
     text-decoration: none;
     padding: 30px;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;

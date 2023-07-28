@@ -4,7 +4,7 @@ import { ClipLoader } from "react-spinners"
 import { useAsync } from "../../custom-hooks/useAsync"
 import { getProductById } from "../../services/firebase/firestore/products"
 import ItemDetail from "../ItemDetail/ItemDetail"
-import styles from "./ItemDetailContainer.module.css"
+import s from "./ItemDetailContainer.module.css"
 
 const ItemDetailContainer = () => {
     const { itemId } = useParams()
@@ -38,10 +38,10 @@ const ItemDetailContainer = () => {
     }
 
     return(
-        <div>
-            <h1 className={styles.detailsTitle}>Detalles del producto</h1>
+        <main>
+            <h1 className={s.detailsTitle}>Detalles del producto</h1>
             <ItemDetail {...product} />
-        </div>
+        </main>
     )
 }
 

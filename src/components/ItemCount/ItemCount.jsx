@@ -1,5 +1,5 @@
 import { useState } from "react"
-import styles from "./ItemCount.module.css"
+import s from "./ItemCount.module.css"
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 
@@ -16,12 +16,12 @@ const ItemCount = ({ stock, onAdd }) => {
 
     return(
         <div style={{width: '100%'}}>
-            <div className={styles.countContainer}>
+            <div className={s.countContainer}>
                 <button onClick={decrement}>-</button>
                 <h4>{count}</h4>
                 <button onClick={increment}>+</button>
             </div>
-            <div className={styles.buttonCartContainer}>
+            <div className={s.buttonCartContainer}>
                 <button onClick={() => onAdd(count)}>Agregar al carrito <i className="bi bi-cart-plus"></i></button>
             </div>
         </div>

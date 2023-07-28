@@ -1,20 +1,20 @@
-import styles from './Item.module.css'
 import { useNavigate } from 'react-router-dom'
+import s from './Item.module.css'
 
 const Item = ({ id, img, name, price, displayList }) => {
 
     const navigate = useNavigate()
 
     return(
-        <div onClick={() => navigate(`/item/${id}`)} className={displayList ? styles.listContainer : styles.cardContainer}>
-            <div className={displayList ? styles.listImgContainer : styles.cardImgContainer}>
+        <div onClick={() => navigate(`/item/${id}`)} className={displayList ? s.listContainer : s.cardContainer}>
+            <div className={displayList ? s.listImgContainer : s.cardImgContainer}>
                 <img src={img} alt={name}/>
             </div>
-            <div className={displayList ? styles.listDetailsContainer : styles.cardDetailsContainer}>
+            <div className={displayList ? s.listDetailsContainer : s.cardDetailsContainer}>
                 <h3>{name}</h3>
                 <p>Precio: {price}</p>
             </div>
-            <div className={displayList ? styles.listButtonContainer : styles.cardButtonContainer}>
+            <div className={displayList ? s.listButtonContainer : s.cardButtonContainer}>
                 <button 
                     onClick = {(e) => {
                         e.stopPropagation()

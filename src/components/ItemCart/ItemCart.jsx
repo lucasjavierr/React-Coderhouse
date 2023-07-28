@@ -1,5 +1,5 @@
 import { useCart } from "../../context/CartContext"
-import styles from './ItemCart.module.css'
+import s from './ItemCart.module.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 const ItemCart = ({ id, name, img, price, quantity}) => {
@@ -7,8 +7,8 @@ const ItemCart = ({ id, name, img, price, quantity}) => {
     const { removeItem } = useCart()
 
     return (
-        <div className={styles.cartItemContainer}>
-            <div className={styles.cartItemImgContainer}>
+        <div className={s.cartItemContainer}>
+            <div className={s.cartItemImgContainer}>
                 <img src={img} alt={name}/>
             </div>
             <h2>{name}</h2>
