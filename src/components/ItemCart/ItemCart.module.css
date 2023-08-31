@@ -1,45 +1,45 @@
 .cartItemContainer {
-    min-height: 170px;
-    max-height: 170px;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    text-align: start;
-    margin: 20px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #ccc;
+  min-height: 170px;
+  max-height: 170px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: start;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ccc;
 }
 
 .cartItemImgContainer {
-    display: flex;
-    height: 150px;
-    width: 300px;
-    justify-content: center;
+  display: flex;
+  height: 150px;
+  width: 300px;
+  justify-content: center;
 }
 
 .cartItemImgContainer img {
-    max-width: 270px;
+  max-width: 270px;
 }
 
 .cartItemContainer h3 {
-    justify-self: end;
+  justify-self: end;
 }
 
 .cartItemContainer button {
-    padding: 10px;
-    justify-self: end;
-    margin-right: 30px;
-    color: #000;
-    background-color: #f00;
-    font-size: 30px;
-    border: none;
-    border-radius: 5px;
-    transition: background-color .3s;
+  padding: 10px;
+  justify-self: end;
+  margin-right: 30px;
+  color: #000;
+  background-color: #f00;
+  font-size: 30px;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
 .cartItemContainer button:hover {
-    background-color: rgb(180, 0, 0);
+  background-color: rgb(180, 0, 0);
 }

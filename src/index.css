@@ -1,19 +1,19 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-family: system-ui;
-    scrollbar-color: transparent transparent;
+  font-family: system-ui;
+  scrollbar-color: transparent transparent;
 }
 
 a {
-    text-decoration: none;
-    color: #000;
+  text-decoration: none;
+  color: #000;
 }
 
 body {
-    scrollbar-color: transparent transparent;
+  scrollbar-color: transparent transparent;
 }

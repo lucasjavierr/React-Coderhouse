@@ -1,12 +1,13 @@
 .footer {
-    display: flex;
-    background-color: #91c612;
-    flex-wrap: wrap;
-    padding: 30px;
+  display: flex;
+  background-color: #91c612;
+  flex-wrap: wrap;
+  padding: 30px;
 }
 
-.footer h3, .footer h5 {
-    text-align: center;
-    color: #000;
-    width: 100%;
+.footer h3,
+.footer h5 {
+  text-align: center;
+  color: #000;
+  width: 100%;
 }

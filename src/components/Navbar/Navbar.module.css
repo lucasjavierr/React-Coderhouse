@@ -1,114 +1,108 @@
-/* --left
---right
---top
----width */
-
 header {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    background-color: #fff;
-    position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #fff;
+  position: relative;
 }
 
 .logo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  width: 100%;
 }
 
 .logo a {
-    width: 50%;
+  width: 50%;
 }
 
 .logo a h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    cursor: pointer;
+  font-size: 3rem;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .logo a h1 span {
-    color: #91c612;
-    cursor: pointer
+  color: #91c612;
+  cursor: pointer;
 }
 
 nav {
-    position: sticky;
-    top: 0;
-    z-index: 1;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .navbar ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 10px;
-    
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px;
 }
 
 .navbar ul li {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 .navbar ul li a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
 }
 
 .active {
-    border-radius: 20px;
-    background-color: #6c940e;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    padding: 1.2rem;
-    font-weight: bold;
+  border-radius: 20px;
+  background-color: #6c940e;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  padding: 1.2rem;
+  font-weight: bold;
 }
 
 .inactive {
-    color: #000;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    padding: 1.2rem;
-    font-weight: bold;
+  color: #000;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  padding: 1.2rem;
+  font-weight: bold;
 }
 
 .boxNavLinks {
-    position: absolute;
-    background-color: #6c940e;
-    border-radius: 20px;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s ease-in-out;
-    top: var(--top);
-    left: var(--left);
-    width: var(--width);
-    height: var(--height);
-    z-index: -10;
+  position: absolute;
+  background-color: #6c940e;
+  border-radius: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+  top: var(--top);
+  left: var(--left);
+  width: var(--width);
+  height: var(--height);
+  z-index: -10;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 374px) {
-    .logo {
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        padding: 1.5rem;
-    }
+  .logo {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 1.5rem;
+  }
 
-    .logo a h1 {
-        padding-block: 20px;
-    }
+  .logo a h1 {
+    padding-block: 20px;
+  }
 
-    .logo a {
-        width: auto;
-    }
+  .logo a {
+    width: auto;
+  }
 }

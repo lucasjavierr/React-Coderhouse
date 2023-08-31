@@ -1,12 +1,12 @@
 .divContainerCards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 300px));
-    grid-template-rows: auto;
-    grid-gap: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    justify-content: center;
-    background-color: #ddd;
-    width: 100%;
-    /* text-align: center; */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 300px));
+  grid-template-rows: auto;
+  grid-gap: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  justify-content: center;
+  background-color: #ddd;
+  width: 100%;
+  /* text-align: center; */
 }

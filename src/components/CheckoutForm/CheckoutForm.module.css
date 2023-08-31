@@ -1,88 +1,88 @@
 .formContainer {
-    position: relative;
-    width: 600px;
-    margin: 0 auto;
-    background-color: #fff;
-    border: 2px solid rgba(255, 255, 255, .5);
-    border-radius: 10px;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+  position: relative;
+  width: 600px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .formContainer h2 {
-    padding: 40px;
-    padding-bottom: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 2em;
+  padding: 40px;
+  padding-bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 2em;
 }
 
 .formContainer form {
-    display: flex;
-    flex-direction: column;
-    padding: 40px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  width: 100%;
 }
 
 .inputBox {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    border-bottom: 2px solid #6c940e;
-    margin: 20px 0;
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px solid #6c940e;
+  margin: 20px 0;
 }
 
 .inputBox label {
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    font-size: 20px;
-    font-weight: 500;
-    pointer-events: none;
-    transition: .3s;
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  font-weight: 500;
+  pointer-events: none;
+  transition: 0.3s;
 }
 
-.inputBox input:focus~label,
-.inputBox input:valid~label {
-    top: -5px;
+.inputBox input:focus ~ label,
+.inputBox input:valid ~ label {
+  top: -5px;
 }
 
 .inputBox input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 1em;
-    color: #666;
-    font-weight: 400;
-    padding: 0 35px 0 5px;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  color: #666;
+  font-weight: 400;
+  padding: 0 35px 0 5px;
 }
 
 .campError {
-    color: #f00;
-    font-weight: bold;
-    font-size: 1.2rem;
+  color: #f00;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .formContainer form button {
-    width: 100%;
-    height: 45px;
-    background-color: #91c612;
-    border: none;
-    outline: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-    color: #000;
-    transition: .3s;
+  width: 100%;
+  height: 45px;
+  background-color: #91c612;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #000;
+  transition: 0.3s;
 }
 
 .formContainer form button:hover {
-    background-color: #6c940e;
+  background-color: #6c940e;
 }
