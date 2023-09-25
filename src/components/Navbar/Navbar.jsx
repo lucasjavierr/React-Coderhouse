@@ -21,7 +21,7 @@ const Navbar = () => {
           `Hubo un error al obtener las categorías, ${reject}`
         );
       });
-  }, [setNotification]);
+  }, []);
 
   return (
     <header className={s.header}>

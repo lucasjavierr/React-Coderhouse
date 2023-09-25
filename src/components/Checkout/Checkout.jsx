@@ -6,7 +6,6 @@ import s from "./Checkout.module.css";
 
 const Checkout = () => {
   const { cart, total } = useCart();
-  console.log(cart);
 
   return (
     <main className={s.checkoutContainer}>

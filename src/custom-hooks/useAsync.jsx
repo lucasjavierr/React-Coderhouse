@@ -18,7 +18,7 @@ export const useAsync = (asyncFunction, dependencies = []) => {
       .finally(() => {
         setLoading(false);
       });
-  }, [asyncFunction, dependencies]);
+  }, [...dependencies]);
 
   return { data, error, loading };
 };
